@@ -7,7 +7,6 @@ describe('RestaurantList', () => {
     {id: 1, name: 'Sushi Place'},
     {id: 2, name: 'Pizza Place'},
   ];
-
   let loadRestaurants;
   let context;
 
@@ -18,7 +17,6 @@ describe('RestaurantList', () => {
       restaurants,
       ...propOverrides,
     };
-
     loadRestaurants = props.loadRestaurants;
 
     context = render(<RestaurantList {...props} />);
@@ -26,15 +24,12 @@ describe('RestaurantList', () => {
 
   it('loads restaurants on first render', () => {
     renderWithProps();
-
     expect(loadRestaurants).toHaveBeenCalled();
   });
 
   it('displays the loading indicator while loading', () => {
     renderWithProps({loading: true});
-
     const {queryByTestId} = context;
-
     expect(queryByTestId('loading-indicator')).not.toBeNull();
   });
 
@@ -52,13 +47,11 @@ describe('RestaurantList', () => {
 
     it('does not display the loading indicator while not loading', () => {
       const {queryByTestId} = context;
-
       expect(queryByTestId('loading-indicator')).toBeNull();
     });
 
     it('does not display the error message', () => {
       const {queryByText} = context;
-
       expect(queryByText('Restaurants could not be loaded.')).toBeNull();
     });
   });
@@ -70,7 +63,6 @@ describe('RestaurantList', () => {
 
     it('displays the error message', () => {
       const {queryByText} = context;
-      
       expect(queryByText('Restaurants could not be loaded.')).not.toBeNull();
     });
   });
